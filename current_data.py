@@ -117,6 +117,7 @@ def forward():
     # This is the actual parsing. This needs to be fixed every time yahoo changes their UI.
     for tickerfile in tqdm(tickerfile_list, desc="Parsing progress:", unit="tickers"):
         ticker = tickerfile.split(".html")[0].upper()
+        # deepcode ignore MissingClose: leave open to traverse file in loop
         source = open(f"forward/{tickerfile}").read()
         # Remove commas from the html to make parsing easier.
         source = source.replace(",", "")
